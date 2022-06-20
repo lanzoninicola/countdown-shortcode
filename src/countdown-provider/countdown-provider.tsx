@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Countdown } from "../countdown/types";
+import { Countdown } from "../countdown-widget/types";
 import { CountdownContext } from "./context/countdown-context";
 import { CountdownSettingsStateData, CountdownStateData } from "./types";
 

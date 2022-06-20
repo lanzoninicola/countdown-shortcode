@@ -2,8 +2,8 @@ import useSWR from "swr";
 
 import { CountdownSettingsStateData } from "../../countdown-provider/types";
 import { CountdownThemeStateData } from "../../countdown-theme-provider/types";
-import mockedSettings from "../mock-data/settings.json";
-import mocketTheme from "../mock-data/theme.json";
+import mockedSettings from "../../countdown-widget/mock-data/settings.json";
+import mocketTheme from "../../countdown-widget/mock-data/theme.json";
 import { UseEditorSettingsAPIResponse } from "./useEditorSettings";
 
 /**

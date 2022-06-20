@@ -1,4 +1,4 @@
-import { Countdown } from "../../countdown/types";
+import { Countdown } from "../../countdown-widget/types";
 
 /**
  * This describes the shape of the context data used in the components logic.
