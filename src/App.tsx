@@ -2,10 +2,10 @@ import { CountdownProvider } from "./countdown-provider/countdown-provider";
 import { CountdownThemeProvider } from "./countdown-theme-provider/countdown-theme-provider";
 import CountdownWidget from "./countdown-widget/countdown-widget";
 import useEditorSettings from "./countdown-widget/hooks/useEditorSettings";
-import { Countdown as ICountdown } from "./countdown-widget/types";
+import { Countdown } from "./countdown-widget/types";
 
 interface AppProps {
-  current: ICountdown | ICountdown["id"] | null;
+  current: Countdown | Countdown["id"] | null;
 }
 
 function App({ current }: AppProps) {
