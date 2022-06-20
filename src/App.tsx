@@ -2,11 +2,19 @@ import { CountdownProvider } from "./countdown-provider/countdown-provider";
 import { CountdownThemeProvider } from "./countdown-theme-provider/countdown-theme-provider";
 import Countdown from "./countdown/countdown";
 import useEditorSettings from "./countdown/hooks/useEditorSettings";
+import { Countdown as ICountdown } from "./countdown/types";
 
-function App() {
+interface AppProps {
+  current: ICountdown | ICountdown["id"] | null;
+}
+
+function App({ current }: AppProps) {
   const { settings, theme, isError, isLoading } = useEditorSettings({
-    isMockMode: false,
+    isMockMode: true,
+    current: current,
   });
+
+  console.log(settings);
 
   // TODO: Error component
   // TODO: Handling errors
@@ -20,7 +28,7 @@ function App() {
   }
 
   return (
-    <CountdownProvider settings={settings}>
+    <CountdownProvider settings={settings} current={current}>
       <CountdownThemeProvider theme={theme}>
         <Countdown />
       </CountdownThemeProvider>

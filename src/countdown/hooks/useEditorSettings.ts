@@ -1,10 +1,12 @@
 import { CountdownSettingsStateData } from "../../countdown-provider/types";
 import { CountdownThemeStateData } from "../../countdown-theme-provider/types";
+import { Countdown } from "../types";
 import useMockEditorSettings from "./useMockEditorSettings";
 
 interface UseEditorSettingsProps {
   /** if true load the mock data of the editor settings */
   isMockMode?: boolean;
+  current: Countdown | Countdown["id"] | null;
 }
 
 export interface UseEditorSettingsAPIResponse {

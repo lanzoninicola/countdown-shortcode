@@ -1,3 +1,5 @@
+import { Countdown } from "../../countdown/types";
+
 /**
  * This describes the shape of the context data used in the components logic.
  * This is used to pass data between the components.
@@ -7,11 +9,14 @@
 export type CountdownContextData = CountdownStateData & CountdownStateSetter;
 
 export interface CountdownStateData extends CountdownSettingsStateData {
+  /** The current countdown rendered to the DOM by data-id attribute */
+  currentCountdown: Countdown | Countdown["id"] | null;
   /** Flag that tell us if the timer is expired */
   timerExpired: boolean;
 }
 
 export interface CountdownStateSetter extends CountdownSettingsStateSetter {
+  setCurrentCountdown: (countdown: Countdown | Countdown["id"] | null) => void;
   setTimerExpired: (timerExpired: boolean) => void;
 }
 

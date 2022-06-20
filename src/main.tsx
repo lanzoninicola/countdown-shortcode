@@ -2,16 +2,15 @@ import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { AppProvider } from "./app-provider/app-provider";
 
 const rootElement = document.getElementById("root");
 
 const cdShortcodeWrapperOne = document.createElement("div");
-cdShortcodeWrapperOne.classList.add("countdown-shortcode");
+cdShortcodeWrapperOne.classList.add("wbg-countdown-shortcode");
 cdShortcodeWrapperOne.setAttribute("data-id", "16");
 
 const cdShortcodeWrapperTwo = document.createElement("div");
-cdShortcodeWrapperTwo.classList.add("countdown-shortcode");
+cdShortcodeWrapperTwo.classList.add("wbg-countdown-shortcode");
 cdShortcodeWrapperTwo.setAttribute("data-id", "17");
 
 // get body
@@ -28,7 +27,7 @@ body && body.appendChild(cdShortcodeWrapperTwo);
 
 document.addEventListener("DOMContentLoaded", function () {
   const shortcodes: NodeListOf<Element> = document.querySelectorAll(
-    ".countdown-shortcode"
+    ".wbg-countdown-shortcode"
   );
 
   // for each shortcode node attach create react app
@@ -37,26 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (id) {
       ReactDOM.createRoot(
-        document.querySelector(`.countdown-shortcode[data-id="${id}"]`)!
+        document.querySelector(`.wbg-countdown-shortcode[data-id="${id}"]`)!
       ).render(
         <React.StrictMode>
           <ChakraProvider>
-            <AppProvider current={id}>
-              <App />
-            </AppProvider>
+            <App current={id} />
           </ChakraProvider>
         </React.StrictMode>
       );
     }
   });
 });
-
-// ReactDOM.createRoot(
-//   document.querySelector('.countdown-shortcode[data-id="17"]')!
-// ).render(
-//   <React.StrictMode>
-//     <ChakraProvider>
-//       <App />
-//     </ChakraProvider>
-//   </React.StrictMode>
-// );

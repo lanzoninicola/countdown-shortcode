@@ -1,6 +1,6 @@
 import { useContextSelector } from "use-context-selector";
-import { Countdown } from "../../../types";
-import { AppContext } from "../context";
+import { Countdown } from "../../countdown/types";
+import { CountdownContext } from "../context/countdown-context";
 
 interface UseCurrentCountdownSelector {
   currentCountdown: Countdown | Countdown["id"] | null;
@@ -9,12 +9,12 @@ interface UseCurrentCountdownSelector {
 
 export default function useCurrentCountdownSelector(): UseCurrentCountdownSelector {
   const currentCountdown = useContextSelector(
-    AppContext,
+    CountdownContext,
     (state) => state.currentCountdown
   );
 
   const setCurrentCountdown = useContextSelector(
-    AppContext,
+    CountdownContext,
     (state) => state.setCurrentCountdown
   );
 
