@@ -1,6 +1,6 @@
 import CountdownWidget from "./countdown-widget/countdown-widget";
 import CountdownWidgetProvider from "./countdown-widget-provider/countdown-widget-provider";
-import CountdownWidgetThemeProvider from "./countdown-widget-theme-provider";
+import CountdownWidgetThemeProvider from "./countdown-widget-theme-provider/countdown-widget-theme-provider";
 import useEditorSettings from "./countdown-widget/hooks/useEditorSettings";
 import { Countdown } from "./countdown-widget/types";
 
@@ -13,8 +13,6 @@ function App({ current }: AppProps) {
     isMockMode: true,
     current: current,
   });
-
-  console.log(settings);
 
   // TODO: Error component
   // TODO: Handling errors

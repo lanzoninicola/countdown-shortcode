@@ -1,6 +1,6 @@
 import { Heading } from "@chakra-ui/react";
 import useThemeTitleSelector from "../../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
-import { GoogleFontsLinkTag } from "../../../countdown-widget-typography/countdown-widget-theme-provider";
+import { GoogleFontsLinkTag } from "../../../countdown-widget-typography/countdown-widget-typography";
 
 // TODO: custom unit size for the fontSize
 
