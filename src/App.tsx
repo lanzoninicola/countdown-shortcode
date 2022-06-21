@@ -1,6 +1,6 @@
-import { CountdownProvider } from "./countdown-provider/countdown-provider";
-import { CountdownThemeProvider } from "./countdown-theme-provider/countdown-theme-provider";
 import CountdownWidget from "./countdown-widget/countdown-widget";
+import CountdownWidgetProvider from "./countdown-widget-provider/countdown-widget-provider";
+import CountdownWidgetThemeProvider from "./countdown-widget-theme-provider";
 import useEditorSettings from "./countdown-widget/hooks/useEditorSettings";
 import { Countdown } from "./countdown-widget/types";
 
@@ -28,11 +28,11 @@ function App({ current }: AppProps) {
   }
 
   return (
-    <CountdownProvider settings={settings} current={current}>
-      <CountdownThemeProvider theme={theme}>
+    <CountdownWidgetProvider settings={settings} current={current}>
+      <CountdownWidgetThemeProvider theme={theme}>
         <CountdownWidget />
-      </CountdownThemeProvider>
-    </CountdownProvider>
+      </CountdownWidgetThemeProvider>
+    </CountdownWidgetProvider>
   );
 }
 

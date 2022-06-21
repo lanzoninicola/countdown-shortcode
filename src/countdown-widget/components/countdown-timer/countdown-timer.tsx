@@ -1,5 +1,5 @@
 import { VStack } from "@chakra-ui/react";
-import useCountdownSelector from "../../../countdown-provider/hooks/useCountdownSelector";
+import useCountdownSelector from "../../../countdown-widget-provider/hooks/useCountdownSelector";
 
 import useCountdown from "../../hooks/useCountdown";
 import CounterTitle from "../counter-title/counter-title";

@@ -1,17 +1,20 @@
-import { CountdownSettingsStateData } from "../../countdown-provider/types";
-import { CountdownThemeStateData } from "../../countdown-theme-provider/types";
+import { CountdownWidgetSettingsStateData } from "../../countdown-widget-provider/types";
+import { CountdownWidgetThemeStateData } from "../../countdown-widget-theme-provider/types";
 import { Countdown } from "../types";
 import useMockEditorSettings from "./useMockEditorSettings";
 
 interface UseEditorSettingsProps {
   /** if true load the mock data of the editor settings */
   isMockMode?: boolean;
+  /** The current countdown rendered to the DOM by data-id attribute.
+   * This value must be set to NULL if the component is used inside the editor
+   */
   current: Countdown | Countdown["id"] | null;
 }
 
 export interface UseEditorSettingsAPIResponse {
-  settings: CountdownSettingsStateData | undefined;
-  theme: CountdownThemeStateData | undefined;
+  settings: CountdownWidgetSettingsStateData | undefined;
+  theme: CountdownWidgetThemeStateData | undefined;
   isLoading?: boolean;
   isError?: any;
 }

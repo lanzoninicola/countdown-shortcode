@@ -1,26 +1,29 @@
 import { useState } from "react";
 import { Countdown } from "../countdown-widget/types";
-import { CountdownContext } from "./context/countdown-context";
-import { CountdownSettingsStateData, CountdownStateData } from "./types";
+import { CountdownWidgetContext } from "./context/countdown-widget-context";
+import {
+  CountdownWidgetSettingsStateData,
+  CountdownWidgetStateData,
+} from "./types";
 
-const initState: CountdownStateData = {
+const initState: CountdownWidgetStateData = {
   currentCountdown: null,
   timerExpired: false,
   targetDate: "2022-12-31T23:00",
   targetTimezone: "Europe/Berlin", // "America/Sao_Paulo" "Europe/Berlin", // America/Los_Angeles
 };
 
-interface CountdownProviderProps {
+interface CountdownWidgetProviderProps {
   children: React.ReactNode;
-  settings: CountdownSettingsStateData | undefined;
+  settings: CountdownWidgetSettingsStateData | undefined;
   current?: Countdown | Countdown["id"] | null;
 }
 
-export function CountdownProvider({
+export default function CountdownWidgetProvider({
   children,
   settings,
   current,
-}: CountdownProviderProps) {
+}: CountdownWidgetProviderProps) {
   const [currentCountdown, setCurrentCountdown] = useState<
     Countdown | Countdown["id"] | null
   >(current || initState.currentCountdown);
@@ -33,7 +36,7 @@ export function CountdownProvider({
   );
 
   return (
-    <CountdownContext.Provider
+    <CountdownWidgetContext.Provider
       value={{
         currentCountdown,
         setCurrentCountdown,
@@ -46,6 +49,6 @@ export function CountdownProvider({
       }}
     >
       {children}
-    </CountdownContext.Provider>
+    </CountdownWidgetContext.Provider>
   );
 }

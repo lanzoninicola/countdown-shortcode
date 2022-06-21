@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 
-import useThemeTimerSelector from "../../../countdown-theme-provider/hooks/useThemeTimerSelector";
+import useThemeTimerSelector from "../../../countdown-widget-theme-provider/hooks/useThemeTimerSelector";
 import { RemainingTime } from "../../types";
 import UnitGroup from "./unit-group/unit-group";
 

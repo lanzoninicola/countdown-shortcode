@@ -1,7 +1,7 @@
 import useSWR from "swr";
 
-import { CountdownSettingsStateData } from "../../countdown-provider/types";
-import { CountdownThemeStateData } from "../../countdown-theme-provider/types";
+import { CountdownWidgetSettingsStateData } from "../../countdown-widget-provider/types";
+import { CountdownWidgetThemeStateData } from "../../countdown-widget-theme-provider/types";
 import mockedSettings from "../../countdown-widget/mock-data/settings.json";
 import mocketTheme from "../../countdown-widget/mock-data/theme.json";
 import { UseEditorSettingsAPIResponse } from "./useEditorSettings";
@@ -18,7 +18,10 @@ export default function useMockEditorSettings(): UseEditorSettingsAPIResponse {
     };
   };
   let { data, error } = useSWR<
-    | { settings: CountdownSettingsStateData; theme: CountdownThemeStateData }
+    | {
+        settings: CountdownWidgetSettingsStateData;
+        theme: CountdownWidgetThemeStateData;
+      }
     | undefined
   >("mockData-editorSettings", fetcher);
 

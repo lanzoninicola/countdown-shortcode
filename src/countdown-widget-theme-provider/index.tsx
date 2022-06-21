@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { CountdownThemeContext } from "./context/countdown-theme-context";
-import { CountdownThemeStateData } from "./types";
+import { CountdownWidgetThemeContext } from "./context/countdown-theme-context";
+import { CountdownWidgetThemeStateData } from "./types";
 
 // TODO: define the props in PRO licensing e verify if they are used. But HOW?. Limit client hacking.
 
-const initState: CountdownThemeStateData = {
+const initState: CountdownWidgetThemeStateData = {
   title: {
     text: "Countdown to New Year",
     fontFamily: "Inter",
@@ -28,21 +28,21 @@ const initState: CountdownThemeStateData = {
   },
 };
 
-interface CountdownThemeProviderProps {
+interface CountdownWidgetThemeProviderProps {
   children: React.ReactNode;
-  theme: CountdownThemeStateData | undefined;
+  theme: CountdownWidgetThemeStateData | undefined;
 }
 
 // TODO: set the editor setting for the other properties
-export function CountdownThemeProvider({
+export default function CountdownWidgetThemeProvider({
   children,
   theme,
-}: CountdownThemeProviderProps) {
+}: CountdownWidgetThemeProviderProps) {
   const [title, setTitle] = useState(theme?.title || initState.title);
   const [timer, setTimer] = useState(theme?.timer || initState.timer);
 
   return (
-    <CountdownThemeContext.Provider
+    <CountdownWidgetThemeContext.Provider
       value={{
         title,
         setTitle,
@@ -51,6 +51,6 @@ export function CountdownThemeProvider({
       }}
     >
       {children}
-    </CountdownThemeContext.Provider>
+    </CountdownWidgetThemeContext.Provider>
   );
 }

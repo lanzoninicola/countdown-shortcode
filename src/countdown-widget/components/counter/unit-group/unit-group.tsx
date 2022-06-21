@@ -1,4 +1,4 @@
-import useThemeTimer from "../../../../countdown-theme-provider/hooks/useThemeTimer";
+import useThemeTimer from "../../../../countdown-widget-theme-provider/hooks/useThemeTimer";
 import { StringOrNumber } from "../../../types";
 import Digit from "./digit/digit";
 import UnitGroupWrapper from "./unit-group-wrapper/unit-group-wrapper";

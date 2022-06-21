@@ -1,5 +1,6 @@
 import { Heading } from "@chakra-ui/react";
-import useThemeTitleSelector from "../../../countdown-theme-provider/hooks/useThemeTitleSelector";
+import useThemeTitleSelector from "../../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
+import { GoogleFontsLinkTag } from "../../../countdown-widget-typography/countdown-widget-theme-provider";
 
 // TODO: custom unit size for the fontSize
 
@@ -8,14 +9,24 @@ export default function CounterTitle() {
     useThemeTitleSelector();
 
   return (
-    <Heading
-      as="h2"
-      fontFamily={fontFamily}
-      fontSize={`${fontSize}px`}
-      color={fontColor}
-      fontWeight={fontWeight}
-    >
-      {text}
-    </Heading>
+    <>
+      <GoogleFontsLinkTag
+        googleFonts={[
+          {
+            fontFamily,
+            fontWeight,
+          },
+        ]}
+      />
+      <Heading
+        as="h2"
+        fontFamily={fontFamily}
+        fontSize={`${fontSize}px`}
+        color={fontColor}
+        fontWeight={fontWeight}
+      >
+        {text}
+      </Heading>
+    </>
   );
 }

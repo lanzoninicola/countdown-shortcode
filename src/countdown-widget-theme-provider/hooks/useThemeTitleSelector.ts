@@ -1,36 +1,39 @@
 import { useContextSelector } from "use-context-selector";
-import { CountdownThemeContext } from "../context/countdown-theme-context";
+import { CountdownWidgetThemeContext } from "../context/countdown-theme-context";
 
 export default function useThemeTitleSelector() {
-  const title = useContextSelector(CountdownThemeContext, (ctx) => ctx?.title);
+  const title = useContextSelector(
+    CountdownWidgetThemeContext,
+    (ctx) => ctx?.title
+  );
 
   const text = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.title.text
   );
 
   const fontFamily = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.title.fontFamily
   );
 
   const fontWeight = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.title.fontWeight
   );
 
   const fontSize = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.title.fontSize
   );
 
   const fontColor = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.title.fontColor
   );
 
   const setTitle = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.setTitle
   );
 

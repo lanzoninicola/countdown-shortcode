@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 
-import { ThemeUnitLabel } from "../../../../../countdown-theme-provider/types/timer";
+import { ThemeUnitLabel } from "../../../../../countdown-widget-theme-provider/types/timer";
 
 interface UnitLabelProps {
   label: string;

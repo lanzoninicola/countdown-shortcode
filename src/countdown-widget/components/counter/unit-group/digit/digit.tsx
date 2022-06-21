@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 
-import { ThemeUnitDigit } from "../../../../../countdown-theme-provider/types/timer";
+import { ThemeUnitDigit } from "../../../../../countdown-widget-theme-provider/types/timer";
 import { StringOrNumber } from "../../../../types";
 
 interface DigitProps {

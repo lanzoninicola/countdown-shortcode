@@ -1,71 +1,74 @@
 import { useContextSelector } from "use-context-selector";
-import { CountdownThemeContext } from "../context/countdown-theme-context";
+import { CountdownWidgetThemeContext } from "../context/countdown-theme-context";
 
 export default function useThemeTimerSelector() {
-  const timer = useContextSelector(CountdownThemeContext, (ctx) => ctx?.timer);
+  const timer = useContextSelector(
+    CountdownWidgetThemeContext,
+    (ctx) => ctx?.timer
+  );
 
   const unitsShown = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.unitsShown
   );
 
   const showSeparator = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.showSeparator
   );
 
   const separatorChar = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.separatorChar
   );
 
   const digitFontFamily = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.digitFontFamily
   );
 
   const digitFontWeight = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.digitFontWeight
   );
 
   const digitFontSize = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.digitFontSize
   );
 
   const digitFontColor = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.digitFontColor
   );
 
   const lastUnitColor = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.lastUnitColor
   );
 
   const labelFontFamily = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.labelFontFamily
   );
 
   const labelFontWeight = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.labelFontWeight
   );
 
   const labelFontSize = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.labelFontSize
   );
 
   const labelFontColor = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.labelFontColor
   );
 
   const setTimer = useContextSelector(
-    CountdownThemeContext,
+    CountdownWidgetThemeContext,
     (ctx) => ctx?.setTimer
   );
 
