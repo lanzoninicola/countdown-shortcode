@@ -1,4 +1,5 @@
 import { useContextSelector } from "use-context-selector";
+import COUNTDOWN_WIDGET_INITIAL_STATE from "../constants/initial-state";
 import { CountdownWidgetContext } from "../context/countdown-widget-context";
 
 export default function useCountdownSelector() {
@@ -32,6 +33,15 @@ export default function useCountdownSelector() {
     (ctx) => ctx?.setTimerExpired
   );
 
+  const resetState = () => {
+    const { targetDate, targetTimezone, timerExpired } =
+      COUNTDOWN_WIDGET_INITIAL_STATE;
+
+    setTargetDate(targetDate);
+    setTargetTimezone(targetTimezone);
+    setTimerExpired(timerExpired);
+  };
+
   return {
     targetDate,
     setTargetDate,
@@ -39,5 +49,6 @@ export default function useCountdownSelector() {
     setTargetTimezone,
     timerExpired,
     setTimerExpired,
+    resetState,
   };
 }

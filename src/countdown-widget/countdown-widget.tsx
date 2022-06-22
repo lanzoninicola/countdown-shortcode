@@ -25,7 +25,7 @@ export default function CountdownWidget() {
   return (
     <>
       <GoogleFontsLinkTag googleFonts={googleFonts} />
-      <CountdownTimer />;
+      <CountdownTimer />
     </>
   );
 }

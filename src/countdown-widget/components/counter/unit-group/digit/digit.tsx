@@ -25,6 +25,9 @@ export default function Digit({
       fontWeight={theme.digitFontWeight}
       fontFamily={theme.digitFontFamily}
       color={isLastDigit ? theme.lastUnitColor : theme.digitFontColor}
+      css={{
+        textRendering: "optimizeSpeed",
+      }}
       {...props}
     >
       {value}

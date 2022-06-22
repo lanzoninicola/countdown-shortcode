@@ -12,14 +12,14 @@ export type CountdownWidgetContextData = CountdownWidgetStateData &
 export interface CountdownWidgetStateData
   extends CountdownWidgetSettingsStateData {
   /** The current countdown rendered to the DOM by data-id attribute */
-  currentCountdown: Countdown | Countdown["id"] | null;
+  currentCountdown: Countdown["id"] | null;
   /** Flag that tell us if the timer is expired */
   timerExpired: boolean;
 }
 
 export interface CountdownWidgetStateSetter
   extends CountdownWidgetSettingsStateSetter {
-  setCurrentCountdown: (countdown: Countdown | Countdown["id"] | null) => void;
+  setCurrentCountdown: (countdown: Countdown["id"] | null) => void;
   setTimerExpired: (timerExpired: boolean) => void;
 }
 

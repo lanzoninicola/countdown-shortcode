@@ -1,10 +1,13 @@
+import { useEffect } from "react";
 import { useContextSelector } from "use-context-selector";
 import { Countdown } from "../../countdown-widget/types";
+import COUNTDOWN_WIDGET_INITIAL_STATE from "../constants/initial-state";
 import { CountdownWidgetContext } from "../context/countdown-widget-context";
 
 interface UseCurrentCountdownSelector {
-  currentCountdown: Countdown | Countdown["id"] | null;
-  setCurrentCountdown: (countdown: Countdown | Countdown["id"] | null) => void;
+  currentCountdown: Countdown["id"] | null;
+  setCurrentCountdown: (countdown: Countdown["id"] | null) => void;
+  resetState: () => void;
 }
 
 export default function useCurrentCountdownSelector(): UseCurrentCountdownSelector {
@@ -18,5 +21,19 @@ export default function useCurrentCountdownSelector(): UseCurrentCountdownSelect
     (state) => state.setCurrentCountdown
   );
 
-  return { currentCountdown, setCurrentCountdown };
+  const resetState = () => {
+    const { currentCountdown } = COUNTDOWN_WIDGET_INITIAL_STATE;
+
+    setCurrentCountdown(currentCountdown);
+  };
+
+  useEffect(() => {
+    if (currentCountdown === undefined) {
+      console.error(
+        "useCurrentCountdownSelector hook must be used within a CountdownWidgetProvider"
+      );
+    }
+  }, [currentCountdown]);
+
+  return { currentCountdown, setCurrentCountdown, resetState };
 }

@@ -30,16 +30,14 @@ const initState: CountdownWidgetThemeStateData = {
 
 interface CountdownWidgetThemeProviderProps {
   children: React.ReactNode;
-  theme: CountdownWidgetThemeStateData | undefined;
 }
 
 // TODO: set the editor setting for the other properties
 export default function CountdownWidgetThemeProvider({
   children,
-  theme,
 }: CountdownWidgetThemeProviderProps) {
-  const [title, setTitle] = useState(theme?.title || initState.title);
-  const [timer, setTimer] = useState(theme?.timer || initState.timer);
+  const [title, setTitle] = useState(initState.title);
+  const [timer, setTimer] = useState(initState.timer);
 
   return (
     <CountdownWidgetThemeContext.Provider

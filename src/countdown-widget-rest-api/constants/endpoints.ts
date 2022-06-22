@@ -11,6 +11,16 @@ const COUNTDOWN_WIDGET_REST_API_ENDPOINTS = {
     endpoint: (id: Countdown["id"]) =>
       `${REST_API_URL}countdowns/${id}/countdown-settings`,
   },
+  create: {
+    method: "POST",
+    endpoint: (id: Countdown["id"]) =>
+      `${REST_API_URL}countdowns/${id}/countdown-settings`,
+  },
+  update: {
+    method: "PUT",
+    endpoint: (id: Countdown["id"]) =>
+      `${REST_API_URL}countdowns/${id}/countdown-settings`,
+  },
 };
 
 export { REST_API_URL, COUNTDOWN_WIDGET_REST_API_ENDPOINTS };

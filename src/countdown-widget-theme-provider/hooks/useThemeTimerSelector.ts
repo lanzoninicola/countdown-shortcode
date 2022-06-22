@@ -1,6 +1,9 @@
 import { useContextSelector } from "use-context-selector";
 import { CountdownWidgetThemeContext } from "../context/countdown-theme-context";
 
+/**
+ * Hook that let works with the single item of the "Timer" state.
+ */
 export default function useThemeTimerSelector() {
   const timer = useContextSelector(
     CountdownWidgetThemeContext,

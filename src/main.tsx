@@ -2,6 +2,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import CountdownWidgetProvider from "./countdown-widget-provider/countdown-widget-provider";
+import CountdownWidgetThemeProvider from "./countdown-widget-theme-provider/countdown-widget-theme-provider";
 
 const rootElement = document.getElementById("root");
 
@@ -40,7 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
       ).render(
         <React.StrictMode>
           <ChakraProvider>
-            <App current={id} />
+            <CountdownWidgetProvider current={id}>
+              <CountdownWidgetThemeProvider>
+                <App current={id} />
+              </CountdownWidgetThemeProvider>
+            </CountdownWidgetProvider>
           </ChakraProvider>
         </React.StrictMode>
       );
