@@ -1,27 +1,31 @@
 import { Heading } from "@chakra-ui/react";
-import useThemeTitleSelector from "../../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
-import { GoogleFontsLinkTag } from "../../../countdown-widget-typography/countdown-widget-typography";
+import React, { useLayoutEffect, useRef, useState } from "react";
+
+import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
+import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
 
 // TODO: custom unit size for the fontSize
 
-export default function CounterTitle() {
-  const { text, fontColor, fontFamily, fontSize, fontWeight } =
-    useThemeTitleSelector();
+function CounterTitle() {
+  const {
+    text,
+    fontColor,
+    fontFamily,
+    fontSize,
+    fontSizeChackraUI,
+    fontWeight,
+  } = useThemeTitleSelector();
+  const { isEditorMode } = useAppContext();
+  const { currentToken } = useCurrentTokenSelector();
 
   return (
     <>
-      <GoogleFontsLinkTag
-        googleFonts={[
-          {
-            fontFamily,
-            fontWeight,
-          },
-        ]}
-      />
+      {console.log(text)}
       <Heading
         as="h2"
         fontFamily={fontFamily}
-        fontSize={`${fontSize}px`}
+        fontSize={isEditorMode ? fontSize[currentToken] : fontSizeChackraUI}
         color={fontColor}
         fontWeight={fontWeight}
       >
@@ -30,3 +34,7 @@ export default function CounterTitle() {
     </>
   );
 }
+
+const areEqual = () => true;
+const MemoizedCounterTitle = React.memo(CounterTitle, areEqual);
+export default MemoizedCounterTitle;

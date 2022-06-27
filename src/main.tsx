@@ -2,14 +2,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import CountdownWidgetProvider from "./countdown-widget-provider/countdown-widget-provider";
-import CountdownWidgetThemeProvider from "./countdown-widget-theme-provider/countdown-widget-theme-provider";
+import CountdownProvider from "./countdown-provider/countdown-provider";
 
 const rootElement = document.getElementById("root");
 
 const cdShortcodeWrapperOne = document.createElement("div");
 cdShortcodeWrapperOne.classList.add("wbg-countdown-shortcode");
-cdShortcodeWrapperOne.setAttribute("data-id", "16");
+cdShortcodeWrapperOne.setAttribute("data-id", "63");
 
 const cdShortcodeWrapperTwo = document.createElement("div");
 cdShortcodeWrapperTwo.classList.add("wbg-countdown-shortcode");
@@ -42,11 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
       ).render(
         <React.StrictMode>
           <ChakraProvider>
-            <CountdownWidgetProvider current={id}>
-              <CountdownWidgetThemeProvider>
-                <App current={id} />
-              </CountdownWidgetThemeProvider>
-            </CountdownWidgetProvider>
+            <CountdownProvider current={id}>
+              <App current={id} />
+            </CountdownProvider>
           </ChakraProvider>
         </React.StrictMode>
       );

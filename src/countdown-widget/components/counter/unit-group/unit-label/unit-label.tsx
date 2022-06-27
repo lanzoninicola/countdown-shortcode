@@ -1,12 +1,14 @@
 import { Text } from "@chakra-ui/react";
+import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
 
-import { ThemeUnitLabel } from "../../../../../countdown-widget-theme-provider/types/timer";
+import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import { ThemeUnitLabelWithChackraUIFontSize } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
 
 interface UnitLabelProps {
   label: string;
   isDanger?: boolean;
   isLastDigit?: boolean;
-  theme: ThemeUnitLabel;
+  theme: ThemeUnitLabelWithChackraUIFontSize;
   [key: string]: any;
 }
 
@@ -16,10 +18,17 @@ export default function UnitLabel({
   theme,
   ...props
 }: UnitLabelProps) {
+  const { isEditorMode } = useAppContext();
+  const { currentToken } = useCurrentTokenSelector();
+
   return (
     <Text
       as="span"
-      fontSize={theme.labelFontSize}
+      fontSize={
+        isEditorMode
+          ? theme.labelFontSize[currentToken]
+          : theme.labelFontSizeChackraUI
+      }
       fontWeight={theme.labelFontWeight}
       fontFamily={theme.labelFontFamily}
       color={isLastDigit ? theme.lastUnitColor : theme.labelFontColor}

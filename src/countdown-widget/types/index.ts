@@ -1,10 +1,23 @@
-export interface Countdown {
-  id: string;
+import { SettingsStateData } from "../../countdown-provider/types/settings";
+import { ThemeStateData } from "../../countdown-provider/types/theme";
+
+export interface CountdownModel {
+  id: StringOrNumber;
   name: string;
   description: string;
   created_at: string;
   updated_at: string;
 }
+
+export interface CountdownSettingsAndThemeModel {
+  id: StringOrNumber;
+  countdown_id: string;
+  settings: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export type CountdownSettingsAndTheme = SettingsStateData & ThemeStateData;
 
 export type StringOrNumber = string | number;
 

@@ -45,3 +45,7 @@ function diffHours(now: dayjs.Dayjs, target: dayjs.Dayjs): number {
 function diffDays(now: dayjs.Dayjs, target: dayjs.Dayjs): number {
   return target.diff(now, "days");
 }
+
+export function diffInSeconds(now: dayjs.Dayjs, target: dayjs.Dayjs): number {
+  return target.diff(now, "seconds");
+}

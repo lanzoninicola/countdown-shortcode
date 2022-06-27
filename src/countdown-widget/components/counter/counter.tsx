@@ -1,5 +1,5 @@
 import { HStack } from "@chakra-ui/react";
-
+import useWidgetTranslation from "../../../countdown-widget-i18n/hooks/useWidgetTranslation";
 import { RemainingTime } from "../../types";
 import UnitGroup from "./unit-group/unit-group";
 
@@ -9,6 +9,8 @@ export default function Counter({
   minutes,
   seconds,
 }: RemainingTime) {
+  const { tw } = useWidgetTranslation();
+
   //TODO: based on configuration some values might be hidden
   // TODO: check the responsiveness of the timer
   //TODO: check if the digit has two digits
@@ -16,10 +18,17 @@ export default function Counter({
 
   return (
     <HStack>
-      <UnitGroup label="Days" value={days} />
-      <UnitGroup label="Hours" value={hours} />
-      <UnitGroup label="Minutes" value={minutes} />
-      <UnitGroup label="Seconds" value={seconds} isLastDigit={true} />
+      <UnitGroup label={days === 1 ? tw("day") : tw("days")} value={days} />
+      <UnitGroup label={hours === 1 ? tw("hour") : tw("hours")} value={hours} />
+      <UnitGroup
+        label={minutes === 1 ? tw("minute") : tw("minutes")}
+        value={minutes}
+      />
+      <UnitGroup
+        label={seconds === 1 ? tw("second") : tw("seconds")}
+        value={seconds}
+        isLastDigit={true}
+      />
     </HStack>
   );
 }

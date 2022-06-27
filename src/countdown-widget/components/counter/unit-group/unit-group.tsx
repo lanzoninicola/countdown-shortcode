@@ -1,4 +1,6 @@
-import useThemeTimer from "../../../../countdown-widget-theme-provider/hooks/useThemeTimer";
+import React from "react";
+
+import useThemeTimer from "../../../../countdown-provider/hooks/theme/useThemeTimer";
 import { StringOrNumber } from "../../../types";
 import Digit from "./digit/digit";
 import UnitGroupWrapper from "./unit-group-wrapper/unit-group-wrapper";
@@ -12,38 +14,43 @@ interface UnitGroupProps {
   isLastDigit?: boolean;
 }
 
-export default function UnitGroup({
-  label,
-  value,
-  isDanger,
-  isLastDigit,
-}: UnitGroupProps) {
+function UnitGroup({ label, value, isDanger, isLastDigit }: UnitGroupProps) {
   const digitTheme = useThemeTimer("unit-digit");
   const labelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
 
-  const separatorFontSize = digitTheme.digitFontSize * 0.5;
-
   return (
     <UnitGroupWrapper>
       <Digit
+        gridArea={"digit"}
         value={value}
         isDanger={isDanger}
         isLastDigit={isLastDigit}
-        gridArea={"digit"}
         theme={digitTheme}
       />
       <UnitLabel
+        gridArea={"label"}
         label={label}
         isLastDigit={isLastDigit}
-        gridArea={"label"}
         theme={labelTheme}
       />
       {!isLastDigit && separatorTheme.showSeparator && (
-        <UnitSeparator gridArea={"separator"} fontSize={separatorFontSize}>
-          {separatorTheme.separatorChar}
-        </UnitSeparator>
+        <UnitSeparator
+          gridArea={"separator"}
+          theme={digitTheme}
+          separatorText={separatorTheme.separatorChar}
+        />
       )}
     </UnitGroupWrapper>
   );
 }
+
+const areEqual = (prevProps: UnitGroupProps, nextProps: UnitGroupProps) => {
+  return (
+    prevProps.label === nextProps.label && prevProps.value === nextProps.value
+  );
+};
+
+const MemoizedUnitGroup = React.memo(UnitGroup, areEqual);
+
+export default MemoizedUnitGroup;

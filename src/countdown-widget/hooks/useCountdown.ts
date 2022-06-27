@@ -1,13 +1,22 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RemainingTime } from "../types";
-import { DEFAULT_REMAINING_TIME, diff } from "../utils/time-calculation";
+import {
+  DEFAULT_REMAINING_TIME,
+  diff,
+  diffInSeconds,
+} from "../utils/time-calculation";
 import padWithZeros from "../utils/padWithZeros";
+import useSettingsContextReset from "../../countdown-provider/hooks/settings/useSettingsContextReset";
+import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
+import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
+
+// isExpired days + hours + minutes + seconds <= 0
 
 interface UseCountdownProps {
   /** The target date from the (input type="datetime-local") editor*/
@@ -17,8 +26,6 @@ interface UseCountdownProps {
   /** flag that indicates if need to add 0 to the digits. It depends on the editor settings */
   withZeros?: boolean;
 }
-
-// TODO: stopping the interval when the timer is expired
 
 /**
  * @param {string} HTMLInputTargetDate the target date/time in the desired timezone
@@ -31,12 +38,18 @@ export default function useCountdown({
   HTMLInputTargetTimezone,
   withZeros,
 }: UseCountdownProps): RemainingTime {
+  const intervalRef = useRef<number>();
+  const { setTimerExpired } = useAppContext();
   const [remainingTime, setRemainingTime] = useState(DEFAULT_REMAINING_TIME);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       updateRemainingTime();
+      shouldTimerExpired();
     }, 1000);
+
+    intervalRef.current = intervalId;
+
     return () => clearInterval(intervalId);
   }, [HTMLInputTargetDate, HTMLInputTargetTimezone]);
 
@@ -46,6 +59,14 @@ export default function useCountdown({
 
   function shouldPadWithZeros(number: number, digits: number = 2) {
     return withZeros ? padWithZeros(number, digits) : number;
+  }
+
+  function shouldTimerExpired() {
+    const seconds = diffInSeconds(todayLocalTime(), targetLocalTime());
+    if (seconds <= 0) {
+      clearInterval(intervalRef.current);
+      setTimerExpired(true);
+    }
   }
 
   /** convert the given target date/time (string format) from the given timezone to the final-user timezone **/
